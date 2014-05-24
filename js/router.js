@@ -8,15 +8,13 @@ App.Router = Backbone.Router.extend({
         '': 'homeView',
         'home': 'homeView',
         'about': 'aboutView',
-        'blog': 'blogView',
-        'contact': 'contactView'
+        'blog': 'blogView'
     },
 
     views: {
         'homeView': new App.HomeView(),
         'aboutView': new App.AboutView(),
-        'blogView': new App.BlogView(),
-        'contactView': new App.ContactView()
+        'blogView': new App.BlogView()
     },
 
     initialize: function() {
@@ -29,9 +27,6 @@ App.Router = Backbone.Router.extend({
             }, this)),
             $.get('templates/blogTemplate.html').done(_.bind(function (response) {
                 this.views.blogView.template = _.template(response);
-            }, this)),
-            $.get('templates/contactTemplate.html').done(_.bind(function (response) {
-                this.views.contactView.template = _.template(response);
             }, this))
 
         ).done(_.bind(function () {
@@ -57,12 +52,6 @@ App.Router = Backbone.Router.extend({
         clearNavButtons();
         $('#blog-nav').addClass('active');
         this.views.blogView.render();
-    },
-
-    contactView: function() {
-        clearNavButtons();
-        $('#contact-nav').addClass('active');
-        this.views.contactView.render();
     }
 });
 

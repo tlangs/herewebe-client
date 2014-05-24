@@ -9,6 +9,6 @@ App.BlogPost = Backbone.Model.extend({
 
 App.BlogPosts = Backbone.Collection.extend({
 
-    model: App.BlogPostModel
+    model: App.BlogPost
 
 });

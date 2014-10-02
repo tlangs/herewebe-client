@@ -2,7 +2,7 @@
  * Created by trevyn on 4/19/14.
  */
 
-App.BlogView = Backbone.View.extend({
+App.WorkView = Backbone.View.extend({
 
     el: $('#view-main'),
 

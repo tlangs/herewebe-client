@@ -8,13 +8,15 @@ App.Router = Backbone.Router.extend({
         '': 'homeView',
         'home': 'homeView',
         'about': 'aboutView',
-        'work': 'workView'
+        'work': 'workView',
+        'soylent': 'soylentView'
     },
 
     views: {
         'homeView': new App.HomeView(),
         'aboutView': new App.AboutView(),
-        'workView': new App.WorkView()
+        'workView': new App.WorkView(),
+        'soylentView': new App.SoylentView()
     },
 
     initialize: function() {
@@ -27,6 +29,9 @@ App.Router = Backbone.Router.extend({
             }, this)),
             $.get('templates/workTemplate.html').done(_.bind(function (response) {
                 this.views.workView.template = _.template(response);
+            }, this)),
+            $.get('templates/soylent/soylentTemplate.html').done(_.bind(function (response) {
+                this.views.soylentView.template = _.template(response);
             }, this))
 
         ).done(_.bind(function () {
@@ -52,6 +57,11 @@ App.Router = Backbone.Router.extend({
         clearNavButtons();
         $('#work-nav').addClass('active');
         this.views.workView.render();
+    },
+
+    soylentView: function() {
+        clearNavButtons();
+        this.views.soylentView.render();
     }
 });
 
